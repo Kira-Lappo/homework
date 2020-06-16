@@ -1,12 +1,11 @@
 ﻿using System.Net.Sockets;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
+using System.Runtime.Serialization;
 
 namespace Kira.Async.ServeAndListen
 {
     public class CommandSender
     {
-        private static readonly BinaryFormatter _BinaryFormatter = new BinaryFormatter();
+        private static readonly IFormatter Serializer = CommandSerializer.Serializer;
 
         public int Port { get; }
 
@@ -38,7 +37,7 @@ namespace Kira.Async.ServeAndListen
             var clientStream = tcpClient.GetStream();
             try
             {
-                _BinaryFormatter.Serialize(clientStream, command);
+                Serializer.Serialize(clientStream, command);
             }
             finally
             {
