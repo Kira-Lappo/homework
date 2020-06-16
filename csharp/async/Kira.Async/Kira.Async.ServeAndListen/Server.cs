@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace Kira.Async.ServeAndListen
 {
     public class Server
     {
+        private static readonly BinaryFormatter BinaryFormatter = new BinaryFormatter();
+
         public int Port { get; }
 
         public string Host { get; }
@@ -56,10 +59,16 @@ namespace Kira.Async.ServeAndListen
 
         private bool TryHandleStream(NetworkStream clientStream)
         {
-            var command = ReadCommand(clientStream)?.ToLower();
+            var command = ReadCommand(clientStream);
+            var commandName = command?.Name;
+            var commandArgument = command?.Argument;
 
-            switch (command)
+            switch (commandName)
             {
+                case "":
+                    Console.WriteLine("Empty command came from client");
+                    break;
+
                 case null:
                     Console.WriteLine("Can't read command from client");
                     break;
@@ -69,18 +78,16 @@ namespace Kira.Async.ServeAndListen
                     return false;
 
                 default:
-                    Console.WriteLine("Incoming command: " + command);
+                    Console.WriteLine($"Incoming command: {commandName} ({commandArgument})");
                     break;
             }
 
             return true;
         }
 
-        private string ReadCommand(NetworkStream stream)
+        private Command ReadCommand(NetworkStream stream)
         {
-            var buffer = new Span<byte>();
-            stream.Read(buffer);
-            return Encoding.UTF8.GetString(buffer);
+            return (Command) BinaryFormatter.Deserialize(stream);
         }
 
         private TcpListener CreateTcpListener()
