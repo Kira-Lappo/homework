@@ -14,6 +14,13 @@ namespace Kira.Async.ServeAndListen
 
             var commandSender = CreateCommandSender();
 
+            Task.Run(() => 
+                    Task.Delay(1000)
+                    .ContinueWith((t) => 
+                    {
+                        System.Console.WriteLine("Aftere waiting");
+                    }));
+
             // Sending 10 commands just because we want to =)
             var sendTasks = Enumerable.Range(1, 10)
                 .Select(i => Task.Run(() =>
@@ -34,6 +41,7 @@ namespace Kira.Async.ServeAndListen
             {
                 Name = "exit",
             };
+
             commandSender.Send(command);
 
             serverTask.Wait();

@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kira.Async.ServeAndListen", "Kira.Async.ServeAndListen\Kira.Async.ServeAndListen.csproj", "{C0401D36-53BA-4934-A760-2FF1DE6C20B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kira.Async.Progress", "Kira.Async.Progress\Kira.Async.Progress.csproj", "{9F376F72-0E8E-4A92-A73D-3A1E010FD2F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{C0401D36-53BA-4934-A760-2FF1DE6C20B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0401D36-53BA-4934-A760-2FF1DE6C20B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0401D36-53BA-4934-A760-2FF1DE6C20B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F376F72-0E8E-4A92-A73D-3A1E010FD2F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F376F72-0E8E-4A92-A73D-3A1E010FD2F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F376F72-0E8E-4A92-A73D-3A1E010FD2F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F376F72-0E8E-4A92-A73D-3A1E010FD2F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
