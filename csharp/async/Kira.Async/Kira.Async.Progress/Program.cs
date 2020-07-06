@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Kira.Async.Progress
 {
@@ -6,7 +7,10 @@ namespace Kira.Async.Progress
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var progressBar = new ConsoleProgressBar();
+            var philSwiftHere = new PhilSwift();
+            philSwiftHere.DoALottaDamage(progressBar);
         }
+
     }
 }
